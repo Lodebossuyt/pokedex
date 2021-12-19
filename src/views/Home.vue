@@ -1,14 +1,15 @@
 <template>
-<div class="container-fluid bg-info">
+<div class="container-fluid bg-danger">
   <div class="row">
     <div class="col-8 mx-auto">
-      <h1 class="text-center display-1">Pokédex</h1>
-      <div id="pokédex" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-        <div v-for="(pokemon, index) in pokemons" :key="index">
-          <div  class="card col rounded-3 shadow-lg bg-success bg-opacity-10">
-            <img :src="pokemonpic + (index+1) + '.png'" class="card-img-top" alt="pokemon">
+      <h1 class="text-center display-1 fw-bold">Pokédex</h1>
+      <div id="pokédex" class="row row-cols-3 g-3">
+        <div v-for="(pokemon, index ) in pokemons" :key="index" >
+          <div  class="card col shadow-lg rounded-3">
+            <img class="card-img-top" :src="pokemonsPic + (index + 1 ) + '.png' "  alt="pokemon">
             <div class="card-body">
-              <p class="card-text text-center fs-2 fw-bold">{{pokemon.name}} {{index+1}}</p>
+              <h5 class="card-text text-center">DexNumber : {{index + 1 }}</h5>
+              <h1 class="card-title fw-bold text-center">{{pokemon.name.toUpperCase()}}</h1>
             </div>
           </div>
         </div>
@@ -25,11 +26,11 @@ export default {
   data(){
     return{
       pokemons: null,
-      pokemonpic: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+      pokemonsPic:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/",
     }
   },
   created(){
-    pokeservice.Pokemons().then(response => {
+    pokeservice.getPokeDex().then(response => {
       this.pokemons = response.data.results;
     }).catch(error =>{console.log(error)})
   },
