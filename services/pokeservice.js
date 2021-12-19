@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const clientApiService = axios.create({
-    baseURl: 'https://pokeapi.co/api/v2',
+    baseURL: 'https://pokeapi.co/api/v2',
     withCredentials: false,
     headers: {
         Accept: 'application/json',
@@ -11,6 +11,6 @@ const clientApiService = axios.create({
 
 export default{
     Pokemons(){
-      return clientApiService.get('/pokemon')
+      return clientApiService.get('/pokemon/?offset=0&limit=150')
     },
 }
