@@ -3,12 +3,12 @@
   <div class="row">
     <div class="col-8 mx-auto">
       <h1 class="text-center display-1">Pokédex</h1>
-      <div id="pokédex" class="row row-cols-3 g-3">
+      <div id="pokédex" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
         <div v-for="(pokemon, index) in pokemons" :key="index">
-          <div  class="card col rounded-3 shadow-lg">
+          <div  class="card col rounded-3 shadow-lg bg-success bg-opacity-10">
             <img :src="pokemonpic + (index+1) + '.png'" class="card-img-top" alt="pokemon">
             <div class="card-body">
-              <p class="card-text text-center fw-bold">{{pokemon.name}} {{index+1}}</p>
+              <p class="card-text text-center fs-2 fw-bold">{{pokemon.name}} {{index+1}}</p>
             </div>
           </div>
         </div>
